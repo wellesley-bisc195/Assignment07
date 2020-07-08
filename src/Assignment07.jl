@@ -1,11 +1,29 @@
 module Assignment07
 
-export question1,
-       question2,
-       question3,
-       question4,
-       question5
+export normalizeDNA
 
-include("assignment.jl")
+# # uncomment the following line if you intend to use BioSequences types
+# using BioSequences
 
+"""
+    normalizeDNA(::AbstractString)
+
+Ensures that a sequence only contains valid bases
+(or `'N'` for unknown bases).
+Returns a `LongSequence{DNAAlphabet{4}}` from BioSequences.
+"""
+function normlizeDNA(seq::AbstractString)
+    seq = uppercase(seq)
+    for base in seq
+        # note: `N` indicates an unknown base
+        occursin(base, "AGCTN") || error("invalid base $base")
+    end
+    return seq # change to `return LongDNASeq(seq)` if you want to try to use BioSequences types
 end
+
+
+# Your code here.
+# Don't forget to export your functions!
+
+
+end # module Assignment07
