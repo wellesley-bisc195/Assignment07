@@ -10,7 +10,7 @@ export normalizeDNA
 
 Ensures that a sequence only contains valid bases
 (or `'N'` for unknown bases).
-Returns a `LongSequence{DNAAlphabet{4}}` from BioSequences.
+Returns a String.
 """
 function normalizeDNA(seq)
     seq = uppercase(string(seq))
