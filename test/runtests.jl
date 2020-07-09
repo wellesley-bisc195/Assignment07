@@ -37,7 +37,12 @@ using Test
         @test_throws ErrorException composition(a)
     end
 
-
+    @tesetset "gc_content (assignment 4)"
+        @test gc_content("ANTG") == 0.25
+        @test gc_content("cccggg") * 100 == 100.0
+        @test gc_content("ATta") == 0.0
+        @test_throws ErrorException gc_content("ATty")
+    end
 
 
 
@@ -51,6 +56,13 @@ end
         c = normalizeDNA('C') 
         @test c == dna"c"
         @test c isa LongSequence
+    end
+
+    @tesetset "gc_content (assignment 4)"
+        @test gc_content(dna"ANTG") == 0.25
+        @test gc_content(dna"cccggg") * 100 == 100.0
+        @test gc_content(dna"ATta") == 0.0
+        @test_throws ErrorException gc_content(dna"ATty")
     end
 
 end
