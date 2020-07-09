@@ -12,8 +12,8 @@ Ensures that a sequence only contains valid bases
 (or `'N'` for unknown bases).
 Returns a `LongSequence{DNAAlphabet{4}}` from BioSequences.
 """
-function normlizeDNA(seq::AbstractString)
-    seq = uppercase(seq)
+function normalizeDNA(seq)
+    seq = uppercase(string(seq))
     for base in seq
         # note: `N` indicates an unknown base
         occursin(base, "AGCTN") || error("invalid base $base")
